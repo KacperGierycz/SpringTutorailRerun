@@ -7,7 +7,9 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
 
 
@@ -19,10 +21,7 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		
-			BeanFactory factory= new XmlBeanFactory(new FileSystemResource("spring.xml"));
-			System.out.println("factory done");
-			Triangle triangle= (Triangle) factory.getBean("triangle");
-			triangle.draw();
+
 		SpringApplication.run(DemoApplication.class, args);
 	}
 	
@@ -32,7 +31,11 @@ public class DemoApplication {
 	@Bean
 	public CommandLineRunner run() throws Exception {
  		return args -> {
- 			
+			//BeanFactory factory= new XmlBeanFactory(new FileSystemResource("spring.xml"));
+			//System.out.println("factory done");
+			ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
+			Triangle triangle= (Triangle) context.getBean("triangle");
+			triangle.draw();
 
 
 // 			Triangle triangle=new Triangle();
