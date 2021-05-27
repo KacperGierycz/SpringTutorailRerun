@@ -18,6 +18,11 @@ public class DemoApplication {
 
 
 	public static void main(String[] args) {
+		
+			BeanFactory factory= new XmlBeanFactory(new FileSystemResource("spring.xml"));
+			System.out.println("factory done");
+			Triangle triangle= (Triangle) factory.getBean("triangle");
+			triangle.draw();
 		SpringApplication.run(DemoApplication.class, args);
 	}
 	
@@ -28,11 +33,10 @@ public class DemoApplication {
 	public CommandLineRunner run() throws Exception {
  		return args -> {
  			
- 			BeanFactory factory= new XmlBeanFactory(new FileSystemResource("spring.xml"));
- 			
 
- 			Triangle triangle=new Triangle();
- 			triangle.draw();
+
+// 			Triangle triangle=new Triangle();
+// 			triangle.draw();
  			
 			log.info(null);
 		};
