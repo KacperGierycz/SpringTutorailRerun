@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
 
@@ -33,8 +34,10 @@ public class DemoApplication {
  		return args -> {
 			//BeanFactory factory= new XmlBeanFactory(new FileSystemResource("spring.xml"));
 			//System.out.println("factory done");
-			ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
-			Triangle triangle= (Triangle) context.getBean("triangle");
+			//ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
+			AbstractApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
+			context.registerShutdownHook();
+			Triangle triangle= (Triangle) context.getBean("triangle2");
 			triangle.draw();
 
 
