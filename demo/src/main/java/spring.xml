@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
-<beans>
+<beans default-init-method="myInit" default-destroy-method="cleanUp" >
 
+<bean id="triangle" class="com.example.demo.Triangle"  >
+<property name="pointA" ref="pointA"></property>
+<property name="pointB" ref="pointB"></property>
+<property name="pointC" ref="pointC"></property>
+
+</bean>
+
+<bean id="pointA" class="com.example.demo.Point">
+	<property name="x" value="${pointA.pointX}"/>
+	<property name="y" value="${pointA.pointY}"/>
+
+</bean>
+
+<bean id="pointB" class="com.example.demo.Point">
+	<property name="x" value="-20"/>
+	<property name="y" value="0"/>
+
+</bean>
+
+<bean id="pointC" class="com.example.demo.Point">
+	<property name="x" value="20"/>
+	<property name="y" value="0"/>
+
+</bean>
+
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+<property name="locations" value="properyty.properties"/>
+</bean>
+
+<bean class="com.example.demo.MyBeanFactoryPostProcessor"/>
+
+<bean id="circle" class="com.example.demo.Circle"  >
+<property name="center" ref="pointA"></property>
+
+</bean>
+
+
+</beans>
+
+<!--  
+<bean class="com.example.demo.DisplayNameBeanPostProcesor"/>
+-->
+
+
+<!--   
 <bean id="parenttriangle" class="com.example.demo.Triangle"  >
 <property name="pointA" ref="pointA"></property>
 
@@ -19,27 +64,7 @@
 <property name="pointB" ref="pointB"></property>
 
 </bean>
-
-
-<bean id="pointA" class="com.example.demo.Point">
-	<property name="x" value="0"/>
-	<property name="y" value="0"/>
-
-</bean>
-
-<bean id="pointB" class="com.example.demo.Point">
-	<property name="x" value="-20"/>
-	<property name="y" value="0"/>
-
-</bean>
-
-<bean id="pointC" class="com.example.demo.Point">
-	<property name="x" value="20"/>
-	<property name="y" value="0"/>
-
-</bean>
-
-</beans>
+-->
 
 <!--  
 <bean id="triangle" class="com.example.demo.Triangle" autowire="byName" scope="prototype"  >

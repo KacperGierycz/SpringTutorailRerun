@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-public class Triangle implements initializingBean ApplicationContextAware, BeanNameAware {
+public class Triangle implements Shape, DisposableBean,  InitializingBean, ApplicationContextAware, BeanNameAware {
 
 //	private List<Point>points;
 //
@@ -36,6 +38,7 @@ public class Triangle implements initializingBean ApplicationContextAware, BeanN
 
 	
 	public void draw() {
+		System.out.println("Drawing a Triangle");
 		System.out.println("Point A = "+getPointA().getX()+", "+getPointA().getY());
 		System.out.println("Point B = "+getPointB().getX()+", "+getPointB().getY());
 		System.out.println("Point C = "+getPointC().getX()+", "+getPointC().getY());
@@ -67,7 +70,12 @@ public class Triangle implements initializingBean ApplicationContextAware, BeanN
 		this.pointC = pointC;
 	}
 
-
+	public void myInit() {
+		System.out.println("My init method for Traingle");
+	}
+	public void cleanUp() {
+		System.out.println("destroy method for Traingle");
+	}
 
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) 
@@ -80,6 +88,21 @@ public class Triangle implements initializingBean ApplicationContextAware, BeanN
 	@Override
 	public void setBeanName(String name) {
 System.out.println("Bean name is: "+ name);		
+	}
+
+
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("InitializingBeans init method called for Triangle");		
+	}
+
+
+
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("Before destroy a triangle class");
+		
 	}
 	
 	
