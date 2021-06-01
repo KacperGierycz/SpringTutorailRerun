@@ -37,7 +37,7 @@ public class DemoApplication {
 			//ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
 			AbstractApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
 			context.registerShutdownHook();
-			Shape shape= (Shape) context.getBean("triangle");
+			Shape shape= (Shape) context.getBean("circle");
 			
 		//	Triangle triangle= (Triangle) context.getBean("triangle");
 		//	triangle.draw();

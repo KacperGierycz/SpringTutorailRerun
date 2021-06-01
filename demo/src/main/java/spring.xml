@@ -39,8 +39,12 @@
 
 </bean>
 
+<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
 
 </beans>
+
+
+
 
 <!--  
 <bean class="com.example.demo.DisplayNameBeanPostProcesor"/>
