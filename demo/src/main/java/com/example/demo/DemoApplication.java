@@ -34,7 +34,7 @@ public class DemoApplication {
  		return args -> {
 			//BeanFactory factory= new XmlBeanFactory(new FileSystemResource("spring.xml"));
 			//System.out.println("factory done");
-			//ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
+		//	ApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
 			AbstractApplicationContext context= new ClassPathXmlApplicationContext("spring.xml");
 			context.registerShutdownHook();
 			Shape shape= (Shape) context.getBean("circle");
@@ -42,7 +42,7 @@ public class DemoApplication {
 		//	Triangle triangle= (Triangle) context.getBean("triangle");
 		//	triangle.draw();
 			shape.draw();
-			
+		//	System.out.println(context.getMessage("greeting", null,"Default Greeting",null));
 
 // 			Triangle triangle=new Triangle();
 // 			triangle.draw();
