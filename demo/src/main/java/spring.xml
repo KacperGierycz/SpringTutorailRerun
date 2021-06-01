@@ -38,7 +38,7 @@
 
 </bean>
 
-<bean id="pointC" class="com.example.demo.Point">
+<bean id="center" class="com.example.demo.Point">
 	<property name="x" value="20"/>
 	<property name="y" value="0"/>
 
@@ -56,10 +56,10 @@
 <!-- <property name="center" ref="pointA"></property>
  -->
 </bean>
-
+<!-- 
 <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
-<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
  --> 
 </beans>
 
