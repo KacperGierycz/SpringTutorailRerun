@@ -17,6 +17,7 @@
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
    <context:annotation-config/>
+   <context:component-scan base-package="com.example.demo"/>
  
 <!-- <bean id="triangle" class="com.example.demo.Triangle"  >
 <property name="pointA" ref="pointA"></property>
@@ -50,12 +51,15 @@
 
 <bean class="com.example.demo.MyBeanFactoryPostProcessor"/>
 
-<bean id="circle" class="com.example.demo.Circle"  >
 
-
-<!-- <property name="center" ref="pointA"></property>
- -->
+<!-- <bean id="circle" class="com.example.demo.Circle"  >
+ 
+below center is to be commented if @Resource in setCenter
+ <property name="center" ref="pointA"></property>
+ 
 </bean>
+-->
+
 <!-- 
 <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
